@@ -32,7 +32,8 @@ I/O操作指的是对磁盘的读写操作
  通过Node可以使js代码在服务器端执行  
  Node仅仅对ES标准进行了实现，所以在Node中不包含DOM 和 BOM	  
  Node中可以使用所有的内建对象  
-* String Number Boolean Math Date RegExp Function Object Array  
+* String Number Boolean Math Date RegExp Function Object Array
+
  而BOM和DOM都不能使用  
  但是可以使用 console 也可以使用定时器（setTimeout() setInterval()）  
  Node可以在后台来编写服务器  
