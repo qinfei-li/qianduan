@@ -225,17 +225,18 @@ fs模块中的大部分操作都提供了两种方法：
 			* r 只读
 			* w 可写
 			* a 追加
+	* fs.readFile(path[, options], callback)
+	* fs.readFileSync(path[, options]) 
 
 例  
-	fs.writeFile("C:/Users/lilichao/Desktop/hello.txt","这是通过writeFile写入的内容",{flag:"w"} , function (err) {  
-		if(!err){  
-			console.log("写入成功~~~");  
-		}else{  
-			console.log(err);  
-		}  
-	});  
-	* fs.readFile(path[, options], callback)
-	* fs.readFileSync(path[, options]) 				
+fs.writeFile("C:/Users/lilichao/Desktop/hello.txt","这是通过writeFile写入的内容",{flag:"w"} , function (err) {  
+	if(!err){  
+		console.log("写入成功~~~");  
+	}else{  
+		console.log(err);  
+	}  
+});  
+					
 * 流式文件读取和写入  
 	* 流式读取和写入适用于一些比较大的文件，可以分多次将文件读取到内存中  
 	* fs.createWriteStream(path[, options])
