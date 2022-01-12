@@ -78,10 +78,9 @@ I/O操作指的是对磁盘的读写操作
  在node中有一个全局对象 global，它的作用和网页中window类似
    * 在全局中创建的变量都会作为global的属性保存
    * 在全局中创建的函数都会作为global的方法保存
- 当node在执行模块中的代码时，它会首先在代码的最顶部，添加:
-
- function (exports, require, module, __filename, __dirname) {
-	 在代码的最底部，添加:
+ 当node在执行模块中的代码时，它会首先在代码的最顶部，添加:  
+ function (exports, require, module, __filename, __dirname) {  
+	 在代码的最底部，添加:  
 }
 
  实际上模块中的代码都是包装在一个函数中执行的，并且在函数执行时，同时传递进了5个实参
@@ -105,7 +104,8 @@ I/O操作指的是对磁盘的读写操作
  我们node通过模块的标识来寻找模块的  
  对于核心模块（npm中下载的模块），直接使用模块的名字对其进行引入  
 * var fs = require("fs");  
-* var express = require("express");						
+* var express = require("express");
+					
  对于自定义的文件模块，需要通过文件的路径来对模块进行引入  
  路径可以是绝对路径，如果是相对路径必须以./或 ../开头  
 * var router = require("./router");
@@ -161,13 +161,14 @@ I/O操作指的是对磁盘的读写操作
 	* Buffer.alloc(size)
 		* 创建一个指定大小的buffer对象
 	* Buffer.allocUnsafe(size)
-		* 创建一个指定大小的buffer对象，可以包含敏感数据  				
+		* 创建一个指定大小的buffer对象，可以包含敏感数据
+			
  文件系统简单来说就是通过Node来操作系统中的文件  
  使用文件系统，需要先引入fs模块，fs是核心模块  			
 ### fs模块
 * 引入fs
 * var fs = require("fs");  
- fs模块中的大部分操作都提供了两种方法：同步方法和异步方法  
+fs模块中的大部分操作都提供了两种方法：同步方法和异步方法  
 * 同步方法带sync
 * 异步方法没有sync，都需要回调函数
 * 写入文件
