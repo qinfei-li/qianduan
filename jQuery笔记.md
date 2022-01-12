@@ -1,4 +1,4 @@
-1. 了解jQuery
+# 了解jQuery
   * 是什么: What?
     * 一个JS函数库: write less, do more
     * 封装简化DOM操作(CRUD) / Ajax
