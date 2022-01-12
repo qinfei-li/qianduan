@@ -275,7 +275,7 @@
 ### 开发环境性能优化
 * 优化打包构建速度
   * HMR
-        /*
+     
         HMR: hot module replacement 热模块替换 / 模块热替换  
         作用：一个模块发生变化，只会重新打包这一个模块（而不是打包所有模块）   
         极大提升构建速度  
@@ -297,10 +297,10 @@
                 hot: true
             }
             ...
-        */
+        
 * 优化代码调试
   * source-map
-        /*
+        
             source-map: 一种提供源代码到构建后代码映射技术 （如果构建后代码出错了，通过映射可以追踪源代码错误）
 
             [inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map
@@ -345,7 +345,7 @@
             hidden-source-map 只隐藏源代码，会提示构建后代码错误信息
 
         综合方案--> source-map √ / cheap-module-souce-map
-        */
+        
 ### 生产环境性能优化
 * 优化打包构建速度
   * oneOf
