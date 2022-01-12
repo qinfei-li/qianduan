@@ -28,9 +28,9 @@
 
 ## 开发环境配置
 运行项目指令：  
-    * webpack 会将打包结果输出出去
-    * webpack serve 只会在内存中编译打包，没有输出
-        /*
+* webpack 会将打包结果输出出去
+* webpack serve 只会在内存中编译打包，没有输出
+        
         const { resolve } = require('path');
         const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -96,9 +96,9 @@
             open: true
         }
         };
-        */
+        
 ## 生产环境配置
-        /*
+        
         const { resolve } = require('path');
         //PS D:\woyu\webpack资料\代码> npm i mini-css-extract-plugin -D
         const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -267,7 +267,7 @@
         // 生产环境下会自动压缩js代码
         mode: 'production'
         };
-        */
+        
 ## webpack性能优化
 * 开发环境性能优化
 * 生产环境性能优化
