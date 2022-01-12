@@ -206,17 +206,17 @@ I/O操作指的是对磁盘的读写操作
 	* 读写文件
 		 * fs.write(fd, string[, position[, encoding]], callback)
 		 * fs.writeSync(fd, string[, position[, encoding]])
-				* fd 文件的描述符，需要传递要写入的文件的描述符
- 				* string 要写入的内容
- 				* position 写入的起始位置
- 				* encoding 写入的编码，默认utf-8
+			* fd 文件的描述符，需要传递要写入的文件的描述符
+ 			* string 要写入的内容
+ 			* position 写入的起始位置
+ 			* encoding 写入的编码，默认utf-8
 		 * fs.read(fd, buffer, offset, length, position, callback)
 		 * fs.readSync(fd, buffer, offset, length, position)
-				* path 要读取的文件的路径
-				* options 读取的选项
-				* callback回调函数，通过回调函数将读取到内容返回(err , data)
-				* err 错误对象
-				* data 读取到的数据，会返回一个Buffer		
+			* path 要读取的文件的路径
+			* options 读取的选项
+			* callback回调函数，通过回调函数将读取到内容返回(err , data)
+			* err 错误对象
+			* data 读取到的数据，会返回一个Buffer		
 	* 保存并关闭文件
 		 * fs.close(fd,callback)
 		 * fs.closeSync(fd);		
