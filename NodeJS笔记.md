@@ -18,7 +18,7 @@
  	* C:\work\environment\Egret\Egret Wing 3\bin;
  	* C:\Users\lilichao\AppData\Roaming\npm;
  	* C:\Program Files\MongoDB\Server\3.2\bin;
- 	* C:\Users\lilichao\Desktop\hello
+ 	* C:\Users\lilichao\Desktop\hello  
 当我们在命令行窗口打开一个文件，或调用一个程序时，系统会首先在当前目录下寻找文件程序，如果找到了则直接打开,如果没有找到则会依次到环境变量path的路径中寻找，直到找到为止
 如果没找到则报错
 所以我们可以将一些经常需要访问的程序和文件的路径添加到path中，这样我们就可以在任意位置来访问这些文件和程序了
@@ -51,17 +51,17 @@ I/O操作指的是对磁盘的读写操作
  node就是一款使用js编写的web服务器
  node底层是使用c++的编写的
  node的中js引擎使用的chrome的v8引擎
- node的特点：
-  1.非阻塞、异步的I/O
-  2.事件和回调函数
-  3.单线程（主线程单线程，后台I/O线程池）
-  4.跨平台
+ node的特点：  
+  1.非阻塞、异步的I/O  
+  2.事件和回调函数  
+  3.单线程（主线程单线程，后台I/O线程池）  
+  4.跨平台  
  * 运行hello.js
 	* cmd打开
 	* node hello.js
 
 ### 模块化
- ES5中没有原生支持模块化，我们只能通过script标签引入js文件来实现模块化
+ ES5中没有原生支持模块化，我们只能通过script标签引入js文件来实现模块化  
  在node中为了对模块管理，引入了CommonJS规范
 * 模块的引用
 	* 使用 require()函数来引入一个模块
