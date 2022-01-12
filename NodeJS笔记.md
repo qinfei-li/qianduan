@@ -232,32 +232,29 @@ I/O操作指的是对磁盘的读写操作
 		console.log(err);
 	}
 });
-				   fs.readFile(path[, options], callback)
-				    fs.readFileSync(path[, options])
-				
-				
+  fs.readFile(path[, options], callback)
+  fs.readFileSync(path[, options])  					
 	* 流式文件读取和写入
 		* 流式读取和写入适用于一些比较大的文件，可以分多次将文件读取到内存中
 				
 				fs.createWriteStream(path[, options])
-					- 可以用来创建一个可写流
-					- path，文件路径
-					- options 配置的参数
+					* 可以用来创建一个可写流
+					* path，文件路径
+					* options 配置的参数
 
-				    - 通过监听流的open和close事件来监听流的打开和关闭
-					on(事件字符串,回调函数)
-						- 可以为对象绑定一个事件
-					once(事件字符串,回调函数)
-						- 可以为对象绑定一个一次性的事件，该事件将会在触发一次以后自动失效
+				    * 通过监听流的open和close事件来监听流的打开和关闭
+					* on(事件字符串,回调函数)
+						* 可以为对象绑定一个事件
+					* once(事件字符串,回调函数)
+						* 可以为对象绑定一个一次性的事件，该事件将会在触发一次以后自动失效
 
-				fs.createReadStream(path[, options])
-				 	- 可以用来创建一个可写流
-			        - 如果要读取一个可读流中的数据，必须要为可读流绑定一个data事件，
-					  data事件绑定完毕，它会自动开始读取数据
-			        - 通过监听流的open和close事件来监听流的打开和关闭
+				* fs.createReadStream(path[, options])
+				 	* 可以用来创建一个可写流
+			        * 如果要读取一个可读流中的数据，必须要为可读流绑定一个data事件，data事件绑定完毕，它会自动开始读取数据
+			        * 通过监听流的open和close事件来监听流的打开和关闭
 
-				- pipe()可以将可读流中的内容，直接输出到可写流中
-						rs.pipe(ws);
+				* pipe()可以将可读流中的内容，直接输出到可写流中
+						* rs.pipe(ws);
 			
 			
 			
