@@ -168,6 +168,7 @@ I/O操作指的是对磁盘的读写操作
 ### fs模块
 引入fs  
 * var fs = require("fs"); 
+
 fs模块中的大部分操作都提供了两种方法：  
 同步方法和异步方法  
 * 同步方法带sync
@@ -223,7 +224,18 @@ fs模块中的大部分操作都提供了两种方法：
 		* flag
 			* r 只读
 			* w 可写
-			* a 追加				
+			* a 追加
+
+例  
+	fs.writeFile("C:/Users/lilichao/Desktop/hello.txt","这是通过writeFile写入的内容",{flag:"w"} , function (err) {  
+		if(!err){  
+			console.log("写入成功~~~");  
+		}else{  
+			console.log(err);  
+		}  
+	});  
+	* fs.readFile(path[, options], callback)
+	* fs.readFileSync(path[, options]) 				
 * 流式文件读取和写入  
 	* 流式读取和写入适用于一些比较大的文件，可以分多次将文件读取到内存中  
 	* fs.createWriteStream(path[, options])
