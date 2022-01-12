@@ -1,15 +1,13 @@
-1.命令行窗口(小黑屏)、CMD窗口、终端、shell
+命令行窗口(小黑屏)、CMD窗口、终端、shell
 	- 开始菜单 --> 运行 --> CMD --> 回车
 	- 常用的指令：
 		dir 列出当前目录下的所有文件
 		cd 目录名 进入到指定的目录
 		md 目录名 创建一个文件夹
 		rd 目录名 删除一个文件夹	
-
 	- 目录
 		. 表示当前目录
-		.. 表示上一级目录
-		
+		.. 表示上一级目录	
 	- 环境变量（windows系统中变量）	
 		path
 			C:\work\jdk\jdk1.7.0_75/bin;
@@ -21,24 +19,21 @@
 			C:\Users\lilichao\AppData\Roaming\npm;
 			C:\Program Files\MongoDB\Server\3.2\bin;
 			C:\Users\lilichao\Desktop\hello
-			
 		- 当我们在命令行窗口打开一个文件，或调用一个程序时，
 			系统会首先在当前目录下寻找文件程序，如果找到了则直接打开
 			如果没有找到则会依次到环境变量path的路径中寻找，直到找到为止
 			如果没找到则报错
-			
-
 		- 所以我们可以将一些经常需要访问的程序和文件的路径添加到path中，
 			这样我们就可以在任意位置来访问这些文件和程序了
 			
-I/O (Input/Output)
-	- I/O操作指的是对磁盘的读写操作
+### I/O (Input/Output)
+	* I/O操作指的是对磁盘的读写操作
 	
-Node
-	- Node是对ES标准一个实现，Node也是一个JS引擎
-	- 通过Node可以使js代码在服务器端执行
-	- Node仅仅对ES标准进行了实现，所以在Node中不包含DOM 和 BOM	
-	- Node中可以使用所有的内建对象
+### Node
+	* Node是对ES标准一个实现，Node也是一个JS引擎
+	* 通过Node可以使js代码在服务器端执行
+	* Node仅仅对ES标准进行了实现，所以在Node中不包含DOM 和 BOM	
+	* Node中可以使用所有的内建对象
 		String Number Boolean Math Date RegExp Function Object Array
 		而BOM和DOM都不能使用
 			但是可以使用 console 也可以使用定时器（setTimeout() setInterval()）
@@ -58,7 +53,7 @@ Node
 		- Node处理请求时是单线程，但是在后台拥有一个I/O线程池
 	
 	
-node.js
+### node.js
 	- node是一款对ES标准实现的JS引擎
 	- 通过node可以使js在服务器中运行
 	- node就是一款使用js编写的web服务器
@@ -131,9 +126,7 @@ node.js
 					对于自定义的文件模块，需要通过文件的路径来对模块进行引入
 						路径可以是绝对路径，如果是相对路径必须以./或 ../开头
 						var router = require("./router");
-										
 
-node
 	- 包（package）
 		- 将多个模块组合为一个完整的功能，就是一个包
 		- 包结构
