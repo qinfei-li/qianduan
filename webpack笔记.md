@@ -2,34 +2,65 @@
 ## 配置5个核心
 * entry
 * ouput
-* loader
-* plugins
+* loader 	1. 下载   2. 使用（配置loader）
+* plugins	1. 下载  2. 引入  3. 使用
 * mode
 
-    	const { resolve } = require('path');
+		/*
+		  webpack.config.js  webpack的配置文件
+		    作用: 指示 webpack 干哪些活（当你运行 webpack 指令时，会加载里面的配置）
+
+		    所有构建工具都是基于nodejs平台运行的 模块化默认采用commonjs。
+		*/
+		// resolve用来拼接绝对路径的方法
+		const { resolve } = require('path');
 
 		module.exports = {
-			// 入口文件
+			// webpack入口起点文件
 		  entry: './index.js',
 			// 输出文件
 		  output: {       
+		    // 输出文件名
 		    filename: 'bundle.js',
+		    // 输出路径
+    		    // __dirname是nodejs的变量，代表当前文件的目录绝对路径
 		    path: resolve(__dirname, 'dist')
 		  },
 		  module: {
 		    rules: [
-		
+		 	// 详细loader配置
+    			// 不同文件必须配置不同loader处理
 		    ]
 		  },
-		  plugins: [],
-		  mode: 'development'
+		  plugins: [
+		  // 详细plugins的配置
+		  ],
+		  mode: 'development'// 开发模式(没压缩，一般我们用来测试，压缩了看不懂)
+		  // mode: 'production'
 		};
+		 
+		
+	   1. 运行指令：
+		    开发环境指令：npx webpack ./src/index.js -o ./build/built.js --mode=development
+		       webpack会以 ./src/index.js 为入口文件开始打包，打包后输出到 ./build/built.js
+		       整体打包环境，是开发环境
+		    生产环境指令：npx webpack ./src/index.js -o ./build/built.js --mode=production
+		       webpack会以 ./src/index.js 为入口文件开始打包，打包后输出到 ./build/built.js
+		       整体打包环境，是生产环境
 
+	   2. 结论：
+		    1. webpack能处理js/json资源，不能处理css/img等其他资源
+		    2. 生产环境和开发环境将ES6模块化编译成浏览器能识别的模块化~
+		    3. 生产环境比开发环境多一个压缩js代码。【生产给开发压缩了】
+	    
+		//PS D:\woyu\webpack资料\代码>  npm i webpack-cli -D
+		
 
 ## 开发环境配置
 运行项目指令：  
 * webpack 会将打包结果输出出去
 * webpack serve 只会在内存中编译打包，没有输出
+* PS D:\woyu\webpack资料\代码\2.webpack开发环境配置\03.打包样式资源>  webpack
         
         const { resolve } = require('path');
         const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -45,30 +76,72 @@
             // loader的配置
             {
                 // 处理less资源
+		//PS D:\woyu\webpack资料\代码> npm i less-loader -D
                 test: /\.less$/,
                 use: ['style-loader', 'css-loader', 'less-loader']
             },
             {
                 // 处理css资源
+		//PS D:\woyu\webpack资料\代码> npm i css-loader style-loader -D
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: [
+			  // use数组中loader执行顺序：从右到左，从下到上 依次执行
+			  // 创建style标签，将js中的样式资源插入进行，添加到head中生效
+			  'style-loader',
+			  // 将css文件变成commonjs模块加载js中，里面内容是样式字符串
+			  'css-loader'
+			]
             },
             {
                 // 处理图片资源
-                test: /\.(jpg|png|gif)$/,
-                loader: 'url-loader',
+                test: /\.(jpg|png|gif)$/,// 匹配哪些文件
+                // 下载 url-loader [file-loader]
+		//PS D:\woyu\webpack资料\代码> npm i html-loader url-loader file-loader -D
+		loader: 'url-loader',
+		//打包图片问题，webpack5x版本已废弃 url-loader、file-loader等
+		/*解决：
+		{
+			test: /\.(jpe|png|gif)$/,
+			type: 'asset/inline' //替代url-loader
+		      },
+		---------------------------------------------------------------------
+		以下是官方解读
+
+		资源模块(asset module)是一种模块类型，它允许使用资源文件（字体，图标等）而无需配置额外 loader。
+
+		在 webpack 5 之前，通常使用：
+
+		raw-loader 将文件导入为字符串
+		url-loader 将文件作为 data URI 内联到 bundle 中
+		file-loader 将文件发送到输出目录
+		资源模块类型(asset module type)，通过添加 4 种新的模块类型，来替换所有这些 loader：
+
+		asset/resource 发送一个单独的文件并导出 URL。之前通过使用 file-loader 实现。
+		asset/inline 导出一个资源的 data URI。之前通过使用 url-loader 实现。
+		asset/source 导出资源的源代码。之前通过使用 raw-loader 实现。
+		asset 在导出一个 data URI 和发送一个单独的文件之间自动选择。之前通过使用 url-loader，并且配置资源体积限制实现。
+		当在 webpack 5 中使用旧的 assets loader（如 file-loader/url-loader/raw-loader 等）和 asset 模块时，你可能想停止当前 asset 模块的处理，并再次启动处理，
+		这可能会导致 asset 重复，你可以通过将 asset 模块的类型设置为 'javascript/auto' 来解决。*/
                 options: {
+		// 图片大小小于8kb，就会被base64处理
+          	// 优点: 减少请求数量（减轻服务器压力）
+         	 // 缺点：图片体积会更大（文件请求速度更慢）
                 limit: 8 * 1024,
+		 // 给图片进行重命名
+         	 // [hash:10]取图片的hash的前10位
+       		 // [ext]取文件原来扩展名
                 name: '[hash:10].[ext]',
-                // 关闭es6模块化
+                // 问题：因为url-loader默认使用es6模块化解析，而html-loader引入图片是commonjs
+        	// 解决：关闭url-loader的es6模块化，使用commonjs解析
                 esModule: false,
                 outputPath: 'imgs'
                 },
+		//使用这些废弃的旧功能，加上type: 'javascript/auto'
                 type: 'javascript/auto'
             },
             {
-                // 处理html中img资源
                 test: /\.html$/,
+		// 处理html文件的img图片（负责引入img，从而能被url-loader进行处理）
                 loader: 'html-loader'
             },
             {
@@ -84,15 +157,30 @@
         },
         plugins: [
             // plugins的配置
+	    // html-webpack-plugin
+	    //PS D:\woyu\webpack资料\代码> npm i html-webpack-plugin -D
+	    // 功能：默认会创建一个空的HTML，自动引入打包输出的所有资源（JS/CSS）
+	    // 需求：需要有结构的HTML文件
             new HtmlWebpackPlugin({
+	     // 复制 './src/index.html' 文件，并自动引入打包输出的所有资源（JS/CSS）
             template: './src/index.html'
             })
         ],
         mode: 'development',
+		// 开发服务器 devServer：用来自动化（自动编译，自动打开浏览器，自动刷新浏览器~~）
+		// 特点：只会在内存中编译打包，不会有任何输出
+		// 启动devServer指令为： webpack serve
+		//PS D:\woyu\webpack资料\代码\2.webpack开发环境配置\07.devServer> webpack server
         devServer: {
+		// 项目构建后路径
+    		//contentBase: resolve(__dirname, 'build'),
+   		 //版本更改
             static: resolve(__dirname, 'build'),
+	    // 启动gzip压缩
             compress: true,
+	    // 端口号
             port: 3000,
+	    // 自动打开浏览器
             open: true
         }
         };
