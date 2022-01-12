@@ -1,4 +1,4 @@
-# 了解jQuery
+### 了解jQuery
   * 是什么: What?
     * 一个JS函数库: write less, do more
     * 封装简化DOM操作(CRUD) / Ajax
@@ -19,7 +19,7 @@
     * 使用jQuery
       * 使用jQuery函数: $/jQuery
       * 使用jQuery对象: $xxx(执行$()得到的)
-2. jQuery的2把利器
+### jQuery的2把利器
   * jQuery函数: $/jQuery
     * jQuery向外暴露的就是jQuery函数, 可以直接使用
     * 当成一般函数使用: $(param)
@@ -38,7 +38,7 @@
       * [index]: 得到指定下标对应的dom元素
       * each(function(index, domEle){}): 遍历所有dom元素
       * index(): 得到当前dom元素在所有兄弟中的下标
-3. 选择器
+### 选择器
   * 是什么?
     * 有特定语法规则(css选择器)的字符串
     * 用来查找某个/些DOM元素: $("selector")
@@ -73,7 +73,7 @@
       * :checkbox复选框
       * :radio单选按钮
       * :checked: 选中的
-4. 属性/文本
+### 属性/文本
   * 操作标签的属性, 标签体文本
   * attr(name) / attr(name, value): 读写非布尔值的标签属性
   * prop(name) / prop(name, value): 读写布尔值的标签属性
@@ -83,15 +83,13 @@
   * val() / val(value): 读写标签的value
   * html() / html(htmlString): 读写标签体文本
 
-
 括号里的都要加""
 
-  /////////////////////////////////////////////////////////////////////
 
 
 
 
-  1. CSS模块
+### CSS模块
   * style样式
     * css(styleName): 根据样式名得到对应的值
     * css(styleName, value): 设置一个样式
@@ -104,7 +102,7 @@
     * width()/height(): width/height
     * innerWidth()/innerHeight(): width + padding
     * outerWidth()/outerHeight(): width + padding + border
-2. 筛选模块
+### 筛选模块
   * 过滤
     * 在jQuery对象内部的元素中找出部分匹配的元素, 并封装成新的jQuery对象返回
     * first()
@@ -120,7 +118,7 @@
     * preAll(selector): 前的所有兄弟
     * siblings(selector): 所有兄弟
     * parent(): 父元素
-3. 文档处理(CUD)模块
+### 文档处理(CUD)模块
   * 增加
     * append() / appendTo(): 插入后部
     * preppend() / preppendTo(): 插入前部
@@ -132,7 +130,7 @@
   * 更新
     * replaceWith()
   
-4. 事件模块
+### 事件模块
   * $(function(){});同window.onload=function(){}
   * 绑定事件
     * 要先script导入库
@@ -165,12 +163,7 @@
 
 
 
-    ///////////////////////////////////////////////////////////////////
-
-
-
-
-    * 动画效果
+ ### 动画效果
   * 在一定的时间内, 不断改变元素样式
   * slideDown()只改高度/slideUp()/slideToggle()通过高度切换可见状态
   * fadeOut()只改透明度/fadeIn()/fadeToggle()通过透明度切换可见状态
@@ -178,7 +171,7 @@
   * animate({结束时的样式}, time, fun)
   * stop()
 
-* 插件机制
+### 插件机制
   * 扩展jQuery函数对象的方法
     $.extend({
       xxx: fuction () {} // this是$
@@ -190,4 +183,4 @@
     })
     $obj.xxx()
     
-* jQuery文档的结构图
+### jQuery文档的结构图
