@@ -899,4 +899,4 @@
             clientsClaim: true,
             skipWaiting: true
             })
-        ],
+        ]
