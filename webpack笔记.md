@@ -203,7 +203,24 @@
                     reuseExistingChunk: true
                     } 
                 }*/
-                }
+                },
+                // 将当前模块的记录其他模块的hash单独打包为一个文件 runtime
+                // 解决：修改a文件导致b文件的contenthash变化
+                runtimeChunk: {
+                name: entrypoint => `runtime-${entrypoint.name}`
+                },
+                minimizer: [
+                // 配置生产环境的压缩方案：js和css
+                new TerserWebpackPlugin({
+                    // 开启缓存
+                    cache: true,
+                    // 开启多进程打包
+                    parallel: true,
+                    // 启动source-map
+                    sourceMap: true
+                })
+                ]
+
             }
 ## 开发环境配置
 运行项目指令：  
