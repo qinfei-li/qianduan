@@ -173,6 +173,8 @@
                 }
             }
 * optimization
+            const TerserWebpackPlugin = require('terser-webpack-plugin')
+
             optimization: {
                 splitChunks: {
                 chunks: 'all'
@@ -211,6 +213,7 @@
                 },
                 minimizer: [
                 // 配置生产环境的压缩方案：js和css
+                //PS D:\woyu\webpack资料\代码> npm i terser-webpack-plugin -D
                 new TerserWebpackPlugin({
                     // 开启缓存
                     cache: true,
@@ -220,7 +223,6 @@
                     sourceMap: true
                 })
                 ]
-
             }
 ## 开发环境配置
 运行项目指令：  
