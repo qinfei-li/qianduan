@@ -86,7 +86,7 @@
 			    // libraryTarget: 'global' // 变量名添加到哪个上 node
 			    // libraryTarget: 'commonjs'
 			},
-* loader 	1. 下载   2. 使用（配置loader）
+* loader 		1. 下载   2. 使用（配置loader）
 
 			module: {
 			    rules: [
@@ -119,7 +119,7 @@
 			    ]
 			},
 
-* plugins	1. 下载  2. 引入  3. 使用
+* plugins		1. 下载  2. 引入  3. 使用
 * mode
 
 * 除了上面五个以外的
